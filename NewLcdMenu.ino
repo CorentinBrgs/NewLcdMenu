@@ -38,19 +38,39 @@
 		""
 	};
 
-	Window menuPcp = Window(&lcdMenu.lcd);
-	Window menuScd = Window(&lcdMenu.lcd, "Menu Secondaire");
-	Window text1 = Window(&lcdMenu.lcd, "coucou :D");
+	const char* const strText1_table[] PROGMEM = {
+		"      coucou !      ",
+		"Gege ptite mere :D  ",
+		" WESH le frerot     "};
 
-void setup(){
+	Window menuPcp = Window();
+	Window menuScd = Window();
+	WindowText text1 = WindowText();
+
+void setup()
+{
 	lcdMenu.begin(strDEMARRAGE_table);
-	menuPcp.setTitle("Menu Principal");
-	
-	menuPcp.setNextWindow(&menuScd);
-	menuScd.setNextWindow(&menuPcp);
 
-	lcdMenu.addWindowToUI(&menuScd);
+	menuPcp.init(&lcdMenu.lcd);
+	menuPcp.setTitle("Menu Principal");
+
+	menuScd.init(&lcdMenu.lcd);
+	menuScd.setTitle("Menu Secondaire");
+
+	text1.init(&lcdMenu.lcd);
+	text1.setTitle("Blablabla");
+	text1.addText(strText1_table);
+	
+	menuPcp.setChildWindow(&menuScd);
+	menuScd.setChildWindow(&text1);
+	text1.setChildWindow(&text1);
+
+	//please add first the root window. This window will have an _id = 0.
+	//that means it will have no father window. 
+
 	lcdMenu.addWindowToUI(&menuPcp);
+	lcdMenu.addWindowToUI(&menuScd);
+	lcdMenu.addWindowToUI(&text1);
 
 	lcdMenu.createEventTable(ROWS, COLS,(char*)keys, (Event*)events);
 

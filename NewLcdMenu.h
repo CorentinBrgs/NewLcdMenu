@@ -1,11 +1,18 @@
 #ifndef _NewLcdMenuh_
 #define _NewLcdMenuh_
 
+/*If you want to use the debug mode uncomment these two lines.
+Please consider disabling it for normal use of the library as 
+it will save both static and dynamic memory.*/
+#define _DEBUGMODE_
+#define SERIALSPEED 9600
+//----------------------------------------------------------------
+
 #include <Arduino.h>
 #include <LiquidCrystal_I2C.h>
 
 #include "Window.hpp"
-
+#include "WindowText.hpp"
 
 
 class LcdMenu {
@@ -18,7 +25,7 @@ public :
 	LcdMenu(uint8_t adress, uint8_t ROWS, uint8_t COLS);
 	
 	void begin();
-	void begin(char* strBEGIN_table[]); //écran de démarrage, si nécessaire
+	void begin(char* strBEGIN_table[]); //Screen that displays on boot, if necessary
 	void testCharLcd();
 
 	void addWindowToUI(Window* window);
@@ -57,6 +64,7 @@ private :
 //going next scren
 	Window* _currentWindow;
 	Window* _previousWindow;
+	bool _onStart;
 
 };
 

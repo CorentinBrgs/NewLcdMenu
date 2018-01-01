@@ -5,60 +5,63 @@
 
 uint8_t Window::nbWindow = 0;
 
-Window::Window() {
+Window::Window() 
+{
 
 }
 
-Window::Window(LiquidCrystal_I2C *lcd, char* title) {
-	_id = 0;
-	_lcd = new LiquidCrystal_I2C(0x00,0,0);
-	_lcd = lcd;
 
-	_nextWindow = 0;
-	_windowType = WINDOW;
-	_windowState = INACTIVE;
-
-	_title = title;
-
-	Window::addWindow();
-
-}
-
-Window::Window(LiquidCrystal_I2C *lcd) {
-	_id = 0;
-	_lcd = new LiquidCrystal_I2C(0x00,0,0);
-	_lcd = lcd;
-
-	_nextWindow = 0;
-	_windowType = WINDOW;
-	_windowState = INACTIVE;
-
-	Window::addWindow();
-}
-
-void Window::draw() const{
+void Window::draw() const
+{
 	_lcd->backlight();
 	_lcd->clear();
 	_lcd->print(_title);
 }
 
-bool Window::refresh(Event event) {
-	if (event==EVENT_OK||event==EVENT_MORE||event==EVENT_RIGHT) {
-			return true;
+bool Window::goNextWindow(Event event) 
+{
+	if (event==EVENT_OK) 
+	{
+		setNextWindow(this->getChildWindow());
+		return true;
 	}
-	else {
-		return false;
+	else if (event==EVENT_CANCEL) 
+	{
+		setNextWindow(this->getFatherWindow());;
+		return true;
 	}
+	else {return false;}
 }
 
-void Window::setNextWindow(Window *window) {
+void Window::setNextWindow(Window *window) 
+{
 	_nextWindow = new Window();
 	_nextWindow = window;
 	_nextWindowId = _nextWindow->getId();
 }
 
-void Window::setFatherWindow(Window* window) {
+void Window::setChildWindow(Window *window) 
+{
+	_childWindow = new Window();
+	_childWindow = window;
+	_childWindowId = _childWindow->getId();
+}
+
+void Window::setFatherWindow(Window* window) 
+{
 	_fatherWindow = new Window();
 	_fatherWindow = window;
 	_fatherWindowId = _fatherWindow->getId();
+}
+
+void Window::init(LiquidCrystal_I2C *lcd) 
+{
+	_lcd = new LiquidCrystal_I2C(0x00,0,0);
+	_lcd = lcd;
+	_id = 0;
+	_nextWindow = 0;
+	_windowType = WINDOW;
+	_windowState = INACTIVE;
+
+	Window::addWindow(); //increments the nbWindow static attribute
 }
