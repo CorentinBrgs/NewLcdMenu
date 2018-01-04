@@ -33,6 +33,11 @@ bool Window::goNextWindow(Event event)
 	else {return false;}
 }
 
+bool Window::refresh(Event event) 
+{
+
+}
+
 void Window::setNextWindow(Window *window) 
 {
 	_nextWindow = new Window();
@@ -60,7 +65,6 @@ void Window::init(LiquidCrystal_I2C *lcd)
 	_lcd = lcd;
 	_id = 0;
 	_nextWindow = 0;
-	_windowType = WINDOW;
 	_windowState = INACTIVE;
 
 	Window::addWindow(); //increments the nbWindow static attribute

@@ -40,12 +40,18 @@
 
 	const char* const strText1_table[] PROGMEM = {
 		"      coucou !      ",
-		"Gege ptite mere :D  ",
-		" WESH le frerot     "};
+		" Gege ptite mere :D ",
+		"  WESH le frerot    "};
 
 	Window menuPcp = Window();
 	Window menuScd = Window();
 	WindowText text1 = WindowText();
+
+	uint8_t val_ChoiceVal1 = 4;
+	char* str_ChoiceVal1 = "choix 1";
+	ChoiceValue choiceVal1 = ChoiceValue();
+
+
 
 void setup()
 {
@@ -75,12 +81,26 @@ void setup()
 	lcdMenu.createEventTable(ROWS, COLS,(char*)keys, (Event*)events);
 
 	lcdMenu.setCurrentWindow(&menuPcp);
+
+	choiceVal1.init(&str_ChoiceVal1, 0);
+	choiceVal1.addValue(&val_ChoiceVal1);
 	delay(1000);
 
 }
 
 void loop()
 {
-	key = kpd.getKey();
-	lcdMenu.loop(lcdMenu.convertKeyToEvent(key));
+
+//Uncomment this and comment the rest to have normal working for LcdMenu. 
+	//key = kpd.getKey();
+	//lcdMenu.loop(lcdMenu.convertKeyToEvent(key));
+
+//testing the ChoiceValue class
+	Serial.println(choiceVal1.getLabel());
+	Serial.println(choiceVal1.getValue());
+	Serial.println(val_ChoiceVal1);
+
+	delay(1000);
+	val_ChoiceVal1 ++;
+
 }

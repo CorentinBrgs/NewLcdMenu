@@ -200,23 +200,18 @@ bool LcdMenu::loop(Event event)
 		#endif
 
 		WindowType currentWindowType = _currentWindow->getWindowType();
-		if (_currentWindow->goNextWindow(event)) //if the condition is true, we call the child window according to the type of the window currently opened.
+		_currentWindow->refresh(event);
+		//to refresh the screen when somethings changes in the window : value, selection,...
+		switch(currentWindowType) {
+			case WINDOW_CHOICE :
+
+			break;
+		}
+
+
+		if (_currentWindow->goNextWindow(event)) //if the condition is true, we call the next window
 		{
-			switch (currentWindowType) 
-			{
-				case WINDOW :
-					setCurrentWindow(_currentWindow->getNextWindow());
-				break;
-
-				case WINDOW_TEXT :
-					setCurrentWindow(_currentWindow->getNextWindow());
-				break;
-
-				/*TO BE MODIFIED : two methods instead of one :
-				- refresh() to refresh the screen when somethings changes in the window : value, selection,...
-				- goToNext() if the window calls the next window in getNextWindow()*/
-
-			}
+			setCurrentWindow(_currentWindow->getNextWindow());
 		}
 	}
 }

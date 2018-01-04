@@ -13,6 +13,7 @@ it will save both static and dynamic memory.*/
 
 #include "Window.hpp"
 #include "WindowText.hpp"
+#include "Choice.hpp"
 
 
 class LcdMenu {

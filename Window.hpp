@@ -58,7 +58,7 @@ public :
 	inline void setWindowState(WindowState windowState) {_windowState = windowState;}
 
 	//get methods
-	inline WindowType getWindowType() const {return this->_windowType;}
+	inline WindowType getWindowType() const {return WINDOW;}
 	inline Window* getNextWindow() const {return this->_nextWindow;}
 	inline char* getTitle() const {return this->_title;}//returns title of the current window
 	inline uint16_t getId() const {return this->_id;} //returns id of the current window

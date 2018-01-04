@@ -5,9 +5,7 @@
 #include "WindowText.hpp"
 
 WindowText::WindowText()
-{
-	Window();
-}
+{}
 
 void WindowText::draw() const
 {
@@ -19,12 +17,6 @@ void WindowText::draw() const
 	_lcd->print(_text_table[1]);
 	_lcd->setCursor(0,3);
 	_lcd->print(_text_table[2]);
-}
-
-void  WindowText::init(LiquidCrystal_I2C *lcd)
-{
-	Window::init(lcd);
-	_windowType = WINDOW_TEXT;
 }
 
 void WindowText::addText(char* text_table[3]) 

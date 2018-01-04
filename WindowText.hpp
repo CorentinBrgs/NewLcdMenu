@@ -12,9 +12,11 @@ public :
 	WindowText();
 
 	void draw() const;
-	void init(LiquidCrystal_I2C *lcd); 
-	//used to redefine the _windowType with WINDOW_TEXT
 	void addText(char* text_table[]);
+
+	//get methods
+	inline WindowType getWindowType() const {return WINDOW_TEXT;}
+
 protected :
 	char* _text_table[3];
 
