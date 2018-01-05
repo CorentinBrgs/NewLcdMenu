@@ -37,7 +37,15 @@ void LcdMenu::begin()
 
 void LcdMenu::begin(char* strBEGIN_table[])
 {
+
 	lcd.init();
+
+	//creating a custom char for the lcd for WindowChoice 
+	uint8_t full_arrow[8]  = { 0b01000, 0b01100, 0b01110, 0b01111, 0b01110, 0b01100, 0b01000, 0b00000 };
+	lcd.createChar(0, full_arrow);
+	lcd.home();
+
+	//printing the screen according to the argument
 	lcd.backlight();
 	lcd.print(strBEGIN_table[0]);
 	lcd.setCursor(0,1);
@@ -46,6 +54,8 @@ void LcdMenu::begin(char* strBEGIN_table[])
 	lcd.print(strBEGIN_table[2]);
 	lcd.setCursor(0,3);
 	lcd.print(strBEGIN_table[3]);
+
+	delay(2000);
 
 	#if defined _DEBUGMODE_
 		Serial.begin(SERIALSPEED);
@@ -200,16 +210,17 @@ bool LcdMenu::loop(Event event)
 		#endif
 
 		WindowType currentWindowType = _currentWindow->getWindowType();
-		_currentWindow->refresh(event);
+
+		if(_currentWindow->refresh(event)) {
 		//to refresh the screen when somethings changes in the window : value, selection,...
-		switch(currentWindowType) {
-			case WINDOW_CHOICE :
+		// if the screen has been refreshed then the event won't be passed to the goNextWindow fonction !
+			switch(currentWindowType) {
+				case WINDOW_CHOICE :
 
-			break;
-		}
-
-
-		if (_currentWindow->goNextWindow(event)) //if the condition is true, we call the next window
+				break;
+			}
+		}		
+		else if (_currentWindow->goNextWindow(event)) //if the condition is true, we call the next window
 		{
 			setCurrentWindow(_currentWindow->getNextWindow());
 		}

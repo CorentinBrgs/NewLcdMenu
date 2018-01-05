@@ -4,12 +4,72 @@
 		"selected_items":
 		[
 			[
-				"C",
-				"ChoiceValue"
+				"_c",
+				"_currentSelectedChoice"
+			],
+			[
+				"_",
+				"_currentSelectedChoice"
+			],
+			[
+				"refre",
+				"refreshScreen"
+			],
+			[
+				"re",
+				"refreshScreen"
+			],
+			[
+				"_cd",
+				"_lcd"
+			],
+			[
+				"WIndow",
+				"WindowChoice"
+			],
+			[
+				"c",
+				"_currentSelectedChoice"
+			],
+			[
+				"choi",
+				"choiceVal2"
+			],
+			[
+				"add",
+				"addChoice"
+			],
+			[
+				"Event",
+				"event"
+			],
+			[
+				"set",
+				"setChildWindow"
+			],
+			[
+				"WIn",
+				"WindowChoice"
+			],
+			[
+				"Window",
+				"WindowChoice"
+			],
+			[
+				"label",
+				"_label"
+			],
+			[
+				"str",
+				"str_ChoiceVal1"
 			],
 			[
 				"Choice",
 				"ChoiceWindow"
+			],
+			[
+				"C",
+				"ChoiceValue"
 			],
 			[
 				"CHOCIE",
@@ -20,14 +80,6 @@
 				"currentWindowType"
 			],
 			[
-				"_",
-				"_currentWindow"
-			],
-			[
-				"str",
-				"strText1_table"
-			],
-			[
 				"text",
 				"text_table"
 			],
@@ -36,16 +88,8 @@
 				"menuPcp"
 			],
 			[
-				"set",
-				"setNextWindow"
-			],
-			[
 				"lo",
 				"localTitle"
-			],
-			[
-				"Window",
-				"WindowText"
 			],
 			[
 				"acc",
@@ -111,16 +155,25 @@
 			"file": "NewLcdMenu.h",
 			"settings":
 			{
-				"buffer_size": 2149,
+				"buffer_size": 2316,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "LiquidCrystal_I2C.h",
+			"settings":
+			{
+				"buffer_size": 3437,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "Choice.hpp",
 			"settings":
 			{
-				"buffer_size": 1353,
+				"buffer_size": 1565,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -129,7 +182,7 @@
 			"file": "Window.hpp",
 			"settings":
 			{
-				"buffer_size": 2346,
+				"buffer_size": 2340,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -144,10 +197,19 @@
 			}
 		},
 		{
+			"file": "WindowChoice.hpp",
+			"settings":
+			{
+				"buffer_size": 669,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "NewLcdMenu.ino",
 			"settings":
 			{
-				"buffer_size": 1911,
+				"buffer_size": 2594,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -156,7 +218,16 @@
 			"file": "NewLcdMenu.cpp",
 			"settings":
 			{
-				"buffer_size": 6842,
+				"buffer_size": 7231,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Choice.cpp",
+			"settings":
+			{
+				"buffer_size": 351,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -165,7 +236,7 @@
 			"file": "Window.cpp",
 			"settings":
 			{
-				"buffer_size": 1165,
+				"buffer_size": 1178,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -174,7 +245,16 @@
 			"file": "WindowText.cpp",
 			"settings":
 			{
-				"buffer_size": 622,
+				"buffer_size": 657,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "WindowChoice.cpp",
+			"settings":
+			{
+				"buffer_size": 4441,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -232,6 +312,7 @@
 	],
 	"file_history":
 	[
+		"/home/corentin/Arduino/NewLcdMenu/Window.hpp",
 		"/home/corentin/Arduino/NewLcdMenu/Choice.cpp",
 		"/home/corentin/Arduino/NewLcdMenu/WindowText.cpp",
 		"/home/corentin/Arduino/NewLcdMenu/Window.cpp",
@@ -240,7 +321,6 @@
 		"/home/corentin/Arduino/NewLcdMenu/Choice.hpp",
 		"/home/corentin/Arduino/NewLcdMenu/WindowText.hpp",
 		"/home/corentin/Arduino/NewLcdMenu/NewLcdMenu.h",
-		"/home/corentin/Arduino/NewLcdMenu/Window.hpp",
 		"/home/corentin/Arduino/NewLcdMenu/setKeypad.old.cpp",
 		"/home/corentin/Arduino/libraries/LcdUi/src/LcdScreen.hpp",
 		"/home/corentin/Arduino/libraries/LcdUi/src/LcdUi.h",
@@ -283,6 +363,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"B",
+			"WindowText",
 			"_windowType",
 			"}",
 			"_windowType",
@@ -294,19 +376,21 @@
 		"regex": false,
 		"replace_history":
 		[
+			"0b",
+			"WindowChoice",
 			"goNextWindow",
 			"coucou"
 		],
 		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
-		"whole_word": true,
+		"whole_word": false,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -315,15 +399,74 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2149,
+						"buffer_size": 2316,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								454,
-								454
+								621,
+								621
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 42.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "LiquidCrystal_I2C.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3437,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1088,
+								1088
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 504.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Choice.hpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1565,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								750,
+								750
 							]
 						],
 						"settings":
@@ -335,24 +478,174 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "Choice.hpp",
+					"buffer": 3,
+					"file": "Window.hpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1353,
+						"buffer_size": 2340,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1174,
-								1174
+								87,
+								87
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "WindowText.hpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 362,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								362,
+								362
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "WindowChoice.hpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 669,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								631,
+								631
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "NewLcdMenu.ino",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2594,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2403,
+								2403
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 985.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 7,
+					"file": "NewLcdMenu.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7231,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1045,
+								1045
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 420.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "Choice.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 351,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								22,
+								97
 							]
 						],
 						"settings":
@@ -361,27 +654,86 @@
 							"word_wrap": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 336.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "Window.hpp",
+					"buffer": 9,
+					"file": "Window.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2346,
+						"buffer_size": 1178,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								960,
-								960
+								519,
+								519
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 294.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "WindowText.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 657,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								391,
+								391
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 84.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "WindowChoice.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4441,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3802,
+								3802
 							]
 						],
 						"settings":
@@ -396,164 +748,13 @@
 					},
 					"stack_index": 2,
 					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "WindowText.hpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 362,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								199,
-								199
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "NewLcdMenu.ino",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1911,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1157,
-								1157
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 630.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 5,
-					"file": "NewLcdMenu.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6842,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5226,
-								5226
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2541.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "Window.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1165,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								504,
-								504
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false,
-							"word_wrap": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 77.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "WindowText.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 622,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								175,
-								175
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
 				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 22.0
+		"height": 23.0
 	},
 	"input":
 	{

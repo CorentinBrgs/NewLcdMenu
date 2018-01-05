@@ -4,8 +4,8 @@
 /*If you want to use the debug mode uncomment these two lines.
 Please consider disabling it for normal use of the library as 
 it will save both static and dynamic memory.*/
-#define _DEBUGMODE_
-#define SERIALSPEED 9600
+// #define _DEBUGMODE_
+// #define SERIALSPEED 9600
 //----------------------------------------------------------------
 
 #include <Arduino.h>
@@ -13,7 +13,14 @@ it will save both static and dynamic memory.*/
 
 #include "Window.hpp"
 #include "WindowText.hpp"
+#include "WindowChoice.hpp"
 #include "Choice.hpp"
+
+#if defined(ARDUINO) && ARDUINO >= 100
+#define printByte(args)  write(args);
+#else
+#define printByte(args)  print(args,BYTE);
+#endif
 
 
 class LcdMenu {

@@ -33,9 +33,9 @@ bool Window::goNextWindow(Event event)
 	else {return false;}
 }
 
-bool Window::refresh(Event event) 
+bool Window::refresh(Event event)
 {
-
+	return false;
 }
 
 void Window::setNextWindow(Window *window) 

@@ -4,9 +4,6 @@
 #include <Arduino.h>
 #include <LiquidCrystal_I2C.h>
 
-#define _DEBUGMODE_
-
-
 enum WindowType {
 	WINDOW,
 	WINDOW_CHOICE,
@@ -39,9 +36,9 @@ public :
 	Window(); //only one constructor allowed, to avoid conflicts with subclasses.
 	
 	virtual void draw() const;	//draw the window on the first call
-	bool goNextWindow(Event event); 
+	virtual bool goNextWindow(Event event); 
 	//returns true if the loop must call the window with getNextWindow()
-	bool refresh(Event event);
+	virtual bool refresh(Event event);
 	//actualizes the windows on an event
 	//returns true if the window has been refreshed
 	//by default this method is empty

@@ -21,10 +21,13 @@ void WindowText::draw() const
 
 void WindowText::addText(char* text_table[3]) 
 {
+	for (uint8_t line = 0; line <3; line ++) {
+		_text_table[line] = text_table[line];
+	}
+
 	#ifdef _DEBUGMODE_
 		Serial.println(F("\n/---Adding text to WindowText---/"));
 		for (uint8_t line = 0; line <3; line ++) {
-			_text_table[line] = text_table[line];
 			Serial.println(_text_table[line]);
 		}
 	#endif 
