@@ -5,8 +5,9 @@
 #include "Choice.hpp"
 #include "WindowChoice.hpp"
 
-	#ifdef _DEBUGMODE_
-	#endif 
+#ifndef _DEBUGMODE_
+#define _DEBUGMODE_
+#endif 
 
 WindowChoice::WindowChoice()
 {
@@ -33,8 +34,11 @@ void WindowChoice::draw() const
 	{
 		_lcd->setCursor(1,line+1);
 		_lcd->print(_choice_table[line]->getLabel());
-		_lcd->print(" : ");
-		_lcd->print(_choice_table[line]->getValue());
+	if (_choice_table[_currentSelectedChoice]->getChoiceType() == CHOICE_VALUE)
+		{
+			_lcd->print(" : ");
+			_lcd->print(_choice_table[line]->getValue());
+		}
 		this->refreshScreen();
 	}
 }
@@ -44,9 +48,11 @@ bool WindowChoice::refresh(Event event) {
 		Serial.println(F("\n/---Refreshing WindowChoice---/"));
 	#endif
 
+	//List of actions depending on the event value
 	switch (event) {
 		case EVENT_MORE :
-			if(_aChoiceIsSelected)
+			Serial.print(F("EVENT MORE Detected\n"));
+			if(	this->_choice_table[_currentSelectedChoice]->getChoiceType() == CHOICE_VALUE && _aChoiceIsSelected)
 			{
 				#ifdef _DEBUGMODE_
 					Serial.print(F("Old value = "));
@@ -60,8 +66,8 @@ bool WindowChoice::refresh(Event event) {
 					Serial.println(_choice_table[_currentSelectedChoice]->getValue());
 				#endif
 			}
-			
-			else //if (_currentSelectedChoice < nbChoice -1 ) 
+
+			else //if (_currentSelectedChoice > 0 ) 
 			{
 				_previousSelectedChoice = _currentSelectedChoice;
 				_currentSelectedChoice++;
@@ -76,7 +82,8 @@ bool WindowChoice::refresh(Event event) {
 		break;
 
 		case EVENT_LESS :
-			if(_aChoiceIsSelected)
+			Serial.print(F("EVENT LESS Detected\n"));
+			if(	this->_choice_table[_currentSelectedChoice]->getChoiceType() == CHOICE_VALUE && _aChoiceIsSelected)
 			{
 				#ifdef _DEBUGMODE_
 					Serial.print(F("Old value = "));
@@ -110,10 +117,16 @@ bool WindowChoice::refresh(Event event) {
 				Serial.print(F("Currently selected choice is "));
 				Serial.println(_choice_table[_currentSelectedChoice]->getLabel());
 			#endif
-			_aChoiceIsSelected = true;
-			this->refreshScreen();
-			return true;
+
+			if(	this->_choice_table[_currentSelectedChoice]->getChoiceType() == CHOICE_VALUE)//only in the choice is a CHOICE_VALUE type.
+			{
+				_aChoiceIsSelected = true;
+				this->refreshScreen();
+				return true;
+			}
+			else {return false;} //case when the choice is a window choice, it can't be selected. A press on OK will lead to next window. See goNextWindow for behaviour.
 		break;
+
 		case EVENT_CANCEL :
 
 			if(_aChoiceIsSelected) {
@@ -122,10 +135,43 @@ bool WindowChoice::refresh(Event event) {
 				return true;
 			}
 			else {
-				this->refreshScreen();
+				//this->refreshScreen();
 				return false;
 			}
 		break;
+		default :
+			return false;
+		break;
+	}
+}
+
+bool WindowChoice::goNextWindow(Event event)
+{
+	if(this->_choice_table[_currentSelectedChoice]->getChoiceType() == CHOICE_WINDOW) 
+	{
+		switch(event) {
+			case EVENT_OK :
+				setChildWindow(this->_choice_table[_currentSelectedChoice]->getWindow()); //it is mandatory to set it as child window. If this operation is not done, the father will be set to this window by the UI 
+				setNextWindow(this->getChildWindow());
+				return true;
+			break;
+
+			//default :
+			//	return false;
+			//break;
+		}
+	}
+	if (!_aChoiceIsSelected)
+	{
+		switch(event) {
+			case EVENT_CANCEL :
+				setNextWindow(this->getFatherWindow());;
+				return true;
+			break;
+			default :
+				return false;
+			break;
+		}
 	}
 }
 
@@ -164,16 +210,19 @@ void WindowChoice::refreshScreen() const
 		_lcd->setCursor(0,_currentSelectedChoice+1);
 		_lcd->printByte(0);//printing the custom char full_arrow
 
-		uint8_t tempCursor = _choice_table[_currentSelectedChoice]->getLabelSize() + 4;
-		_lcd->setCursor(tempCursor, _currentSelectedChoice +1);
-		
-		for (uint8_t loop = tempCursor; loop < 20; loop++)//cleaning the value place
+		if (_choice_table[_currentSelectedChoice]->getChoiceType() == CHOICE_VALUE)
 		{
-			_lcd->setCursor(loop, _currentSelectedChoice+1);
-			_lcd->print(" ");
+			uint8_t tempCursor = _choice_table[_currentSelectedChoice]->getLabelSize() + 4;
+			_lcd->setCursor(tempCursor, _currentSelectedChoice +1);
+			
+			for (uint8_t loop = tempCursor; loop < 20; loop++)//cleaning the value place
+			{
+				_lcd->setCursor(loop, _currentSelectedChoice+1);
+				_lcd->print(" ");
+			}
+			_lcd->setCursor(tempCursor, _currentSelectedChoice+1);
+			_lcd->print(_choice_table[_currentSelectedChoice]->getValue());
 		}
-		_lcd->setCursor(tempCursor, _currentSelectedChoice+1);
-		_lcd->print(_choice_table[_currentSelectedChoice]->getValue());
 	}
 }
 

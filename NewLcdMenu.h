@@ -4,8 +4,8 @@
 /*If you want to use the debug mode uncomment these two lines.
 Please consider disabling it for normal use of the library as 
 it will save both static and dynamic memory.*/
-// #define _DEBUGMODE_
-// #define SERIALSPEED 9600
+#define _DEBUGMODE_
+#define SERIALSPEED 115200
 //----------------------------------------------------------------
 
 #include <Arduino.h>

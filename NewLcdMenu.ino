@@ -20,12 +20,12 @@
 		{'2','3'}
 	};
 	const Event events[ROWS][COLS] = {
-		{EVENT_OK, EVENT_CANCEL},
-		{EVENT_MORE, EVENT_LESS}
+		{EVENT_OK, EVENT_MORE},
+		{EVENT_CANCEL, EVENT_LESS}
 	};
 
-	const uint8_t rowPins[ROWS] = {3, 2};
-	const uint8_t colPins[COLS] = {5, 4};
+	const uint8_t rowPins[ROWS] = {4, 3};
+	const uint8_t colPins[COLS] = {6, 5};
 
 	Keypad kpd = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
 	char key = 0;	
@@ -33,8 +33,8 @@
 //-----For LcdMenu UI -----/
 	const char* const strDEMARRAGE_table[] PROGMEM = {
 		"NewLcdMenu",
-		"    by cocoBibi",
-		"v0.1",
+		"    by corentinB",
+		"v0.4",
 		""
 	};
 
@@ -44,59 +44,77 @@
 		"  WESH le frerot    "};
 
 	Window menuPcp = Window();
-	Window menuScd = Window();
-	WindowText text1 = WindowText();
-	WindowChoice wndChoice1 = WindowChoice();
+		WindowChoice wndChoice1 = WindowChoice();
+			WindowText wndText1 = WindowText();
+			WindowChoice wndChoice2 = WindowChoice();
 
-	uint8_t val_ChoiceVal1 = 4;
-	char* str_ChoiceVal1 = "choix 1";
-	ChoiceValue choiceVal1 = ChoiceValue();
+	char* str_choiceWin1_1 = "window 1";
+	ChoiceWindow choiceWin1_1 = ChoiceWindow();
 
-	uint8_t val_ChoiceVal2 = 8;
-	char* str_ChoiceVal2 = "choix 2";
-	ChoiceValue choiceVal2 = ChoiceValue();
+	char* str_choiceWin1_2 = "window 2";
+	ChoiceWindow choiceWin1_2 = ChoiceWindow();
 
+	uint8_t val_choiceVal2_1 = 4;
+	char* str_choiceVal2_1 = "choix 1";
+	ChoiceValue choiceVal2_1 = ChoiceValue();
+
+	uint8_t val_choiceVal2_2 = 4;
+	char* str_choiceVal2_2 = "choix 2";
+	ChoiceValue choiceVal2_2 = ChoiceValue();
 
 void setup()
 {
 	lcdMenu.begin(strDEMARRAGE_table);
 	
-	choiceVal1.init(&str_ChoiceVal1, 0);
-	choiceVal1.addValue(&val_ChoiceVal1);
-	choiceVal2.init(&str_ChoiceVal2, 1);
-	choiceVal2.addValue(&val_ChoiceVal2);
+	choiceWin1_1.init(&str_choiceWin1_1, 0);
+	choiceWin1_1.addWindow(&wndChoice2);
 
+	choiceWin1_2.init(&str_choiceWin1_2, 1);
+	choiceWin1_2.addWindow(&wndText1);
+
+	choiceVal2_1.init(&str_choiceVal2_1, 0);
+	choiceVal2_1.addValue(&val_choiceVal2_1);
+
+	choiceVal2_2.init(&str_choiceVal2_2, 1);
+	choiceVal2_2.addValue(&val_choiceVal2_2);
 
 	menuPcp.init(&lcdMenu.lcd);
 	menuPcp.setTitle("Menu Principal");
 
-	menuScd.init(&lcdMenu.lcd);
-	menuScd.setTitle("Menu Secondaire");
-
-	text1.init(&lcdMenu.lcd);
-	text1.setTitle("Blablabla");
-	text1.addText(strText1_table);
-
 	wndChoice1.init(&lcdMenu.lcd);
 	wndChoice1.setTitle("Je suis WndChoix1 :D");
-	wndChoice1.addChoice(&choiceVal1);
-	wndChoice1.addChoice(&choiceVal2);
+	wndChoice1.addChoice(&choiceWin1_1);
+	wndChoice1.addChoice(&choiceWin1_2);
 
-	menuPcp.setChildWindow(&menuScd);
-	menuScd.setChildWindow(&text1);
-	text1.setChildWindow(&wndChoice1);
-	wndChoice1.setChildWindow(&wndChoice1);
+	wndText1.init(&lcdMenu.lcd);
+	wndText1.setTitle("Blablabla");
+	wndText1.addText(strText1_table);
+
+	wndChoice2.init(&lcdMenu.lcd);
+	wndChoice2.setTitle("Je suis WndChoix2 :D");
+	wndChoice2.addChoice(&choiceVal2_1);
+	wndChoice2.addChoice(&choiceVal2_2);
+
+	// menuPcp.setChildWindow(&wndText1);
+	// //wndChoice2.setChildWindow(&wndChoice1);
+	// wndText1.setChildWindow(&wndChoice2);
+	// wndChoice2.setChildWindow(&wndChoice2);
+
+	menuPcp.setChildWindow(&wndChoice1);
+	//wndChoice2.setChildWindow(&wndChoice1);
+	wndChoice1.setChildWindow(&wndChoice2);
+	wndText1.setChildWindow(&wndText1);
+	wndChoice2.setChildWindow(&wndChoice2);
 
 	//please add first the root window. This window will have an _id = 0.
 	//that means it will have no father window. 
 
 	lcdMenu.addWindowToUI(&menuPcp);
-	lcdMenu.addWindowToUI(&menuScd);
-	lcdMenu.addWindowToUI(&text1);
 	lcdMenu.addWindowToUI(&wndChoice1);
+	lcdMenu.addWindowToUI(&wndText1);	
+	lcdMenu.addWindowToUI(&wndChoice2);
 
 	lcdMenu.createEventTable(ROWS, COLS,(char*)keys, (Event*)events);
-
 	lcdMenu.setCurrentWindow(&menuPcp);
 
 }

@@ -22,7 +22,7 @@ class Choice //abstract class
 		inline char* getLabel() const {return *_label;}
 		inline uint8_t getLabelSize() const {return strlen(*_label);}
 
-		virtual inline uint8_t getValue() const {return NULL;}
+		virtual inline uint8_t getValue() const {return 0;}
 		virtual inline void changeValue(int newValue) {};
 		virtual inline Window* getWindow() const {return NULL;}
 

@@ -13,8 +13,9 @@ public :
 	WindowChoice();
 	void draw() const;
 	bool refresh(Event event);
-	void init(LiquidCrystal_I2C *lcd);
+	bool goNextWindow(Event event);
 
+	void init(LiquidCrystal_I2C *lcd);
 	void addChoice(Choice* choice);
 
 	//get methods

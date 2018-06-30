@@ -48,7 +48,7 @@ public :
 	
 
 	//set methods
-	void init(LiquidCrystal_I2C *lcd);
+	void init(LiquidCrystal_I2C *lcd); //overload the basic class init functions
 
 	inline void setTitle(char* title) {_title = title;}
 	inline void setId(uint8_t id) {_id = id;}
